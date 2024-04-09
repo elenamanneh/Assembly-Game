@@ -1,3 +1,49 @@
+
+#####################################################################
+#
+# CSCB58 Winter 2024 Assembly Final Project
+# University of Toronto, Scarborough
+#
+# Student: Elena Manneh, 1008171069, mannehe2, elena.manneh@mail.utoronto.ca
+#
+# Bitmap Display Configuration:
+# - Unit width in pixels: 8 (update this as needed)
+# - Unit height in pixels: 8 (update this as needed)
+# - Display width in pixels: 512 (update this as needed)
+# - Display height in pixels: 512 (update this as needed)
+# - Base Address for Display: 0x10008000 ($gp)
+#
+# Which milestoneshave been reached in this submission?
+# - Milestone 1: 	a) Level has more than 3 platforms. 
+# 			b) Has a character. 
+#			c) 3 additional objects: ghost, stars, door
+#
+# - Milestone 2:	a) Player can move left, right, and up. 
+#			b) Player can't jump when platform is above them, player can land on platform, and there is gravity for jumping. 
+#			c) There is vertical movement with jumping. 
+# 			d) Collision with ghost ends in a loss. Collision with door when green ends with a win. Collision with all 3 stars 
+#			   enables door to be open/green. Regular collision with platforms. 
+#			e) r to restart, q to quit.
+#
+# Which approved features have been implemented for milestone 3?
+# 			a) Score is based on stars, get 3 stars you can grab then door opens and you can get the win. There is only 1 life. 
+#			b) Fail condition happens when ghost collides with person denoted with a red screen. 
+#			c) Win condition if the players grabs 3 stars and enters the green door.
+#
+# - Milestone 4: 	a) Different modes/levels; normal mode and ghost mode.
+#			b) Moving object. Ghost is always moving in ghost mode.
+#			c) Start screen only shows the platforms. Press g for ghost mode and n for normal mode.
+#
+# Link to video demonstration for final submission:
+# - https://youtu.be/ZYj1E6huLnU
+#
+# Are you OK with us sharing the video with people outside course staff?
+# - yes
+# - https://github.com/elenamanneh/Escape-the-Ghost (will be made public later)
+#
+#####################################################################
+
+
 # Display
 .eqv BASE_ADDRESS 0x10008000
 .eqv screenWidth 64
@@ -89,13 +135,13 @@ END:
 	
 LOSE:
 	jal LOSE_SCREEN
-	li $v0, 10
-	syscall
+	jal CHECK_INPUT
+	j LOSE
 	
 WIN:
 	jal WIN_SCREEN
-	li $v0, 10
-	syscall
+	jal CHECK_INPUT
+	j WIN
 	
 DRAW_LEVEL_NOGHOST:
 
