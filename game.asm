@@ -7,9 +7,9 @@
 # Student: Elena Manneh, 1008171069, mannehe2, elena.manneh@mail.utoronto.ca
 #
 # Bitmap Display Configuration:
-# - Unit width in pixels: 8 (update this as needed)
-# - Unit height in pixels: 8 (update this as needed)
-# - Display width in pixels: 512 (update this as needed)
+# - Unit width in pixels: 8
+# - Unit height in pixels: 8
+# - Display width in pixels: 512
 # - Display height in pixels: 512 (update this as needed)
 # - Base Address for Display: 0x10008000 ($gp)
 #
